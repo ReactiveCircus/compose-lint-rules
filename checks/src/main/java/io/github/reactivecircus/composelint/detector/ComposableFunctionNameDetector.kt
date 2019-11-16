@@ -23,7 +23,7 @@ class ComposableFunctionNameDetector : Detector(), SourceCodeScanner {
 
     companion object {
         val ISSUE: Issue = Issue.create(
-            id = "LowerCaseComposableFunctionName",
+            id = "InvalidComposableFunctionName",
             briefDescription = "A function marked with a `@Composable` annotation should start with a capital letter.",
             explanation = """
                 It is a convention that `@Composable` functions start with a capital letter \

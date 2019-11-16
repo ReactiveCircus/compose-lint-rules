@@ -50,7 +50,7 @@ class ComposableFunctionNameDetectorTest {
             .issues(ComposableFunctionNameDetector.ISSUE)
             .run()
             .expect("""
-                src/test.kt:3: Warning: @Composable function names should be capitalized. [LowerCaseComposableFunctionName]
+                src/test.kt:3: Warning: @Composable function names should be capitalized. [InvalidComposableFunctionName]
                 @Composable
                 ^
                 0 errors, 1 warnings
