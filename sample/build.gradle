@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+
+        applicationId 'io.github.reactivecircus.composelint.sample'
+        versionCode 1
+        versionName "1.0"
+    }
+
+    packagingOptions {
+        exclude 'kotlin/**'
+        exclude '**/*.kotlin_metadata'
+        exclude 'META-INF/*.kotlin_module'
+        exclude 'META-INF/*.version'
+    }
+
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+    }
+
+    buildFeatures {
+        compose true
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+    implementation "androidx.appcompat:appcompat:${versions.androidx.appCompat}"
+    implementation "androidx.core:core-ktx:${versions.androidx.core}"
+    implementation "androidx.ui:ui-layout:${versions.androidx.ui}"
+    implementation "androidx.ui:ui-material:${versions.androidx.ui}"
+    implementation "androidx.ui:ui-tooling:${versions.androidx.ui}"
+
+    lintChecks project(":checks")
+}

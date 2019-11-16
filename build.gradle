@@ -1,0 +1,107 @@
+buildscript {
+    ext {
+        kotlin_version = '1.3.60-eap-25'
+    }
+    ext.buildConfig = [
+            minSdk    : 21,
+            targetSdk : 29,
+            compileSdk: 29,
+            buildTools: '29.0.2'
+    ]
+
+    ext.versions = [
+            androidGradlePlugin: '4.0.0-alpha03',
+            androidLint        : '26.6.0-beta04',
+            detekt             : '1.1.1',
+            mavenPublishPlugin : '0.9.0-SNAPSHOT',
+            kotlin             : '1.3.60',
+            androidx           : [
+                    core      : '1.2.0-beta02',
+                    annotation: '1.1.0',
+                    appCompat : '1.1.0',
+                    ui        : '0.1.0-dev02'
+            ],
+            junit              : '4.12'
+    ]
+
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:${versions.androidGradlePlugin}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${versions.detekt}"
+        classpath "com.vanniktech:gradle-maven-publish-plugin:${versions.mavenPublishPlugin}"
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+        jcenter()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            eachDependency { details ->
+                // Force all Kotlin stdlib artifacts to use the same version.
+                if (details.requested.group == 'org.jetbrains.kotlin' && details.requested.name.startsWith('kotlin-stdlib')) {
+                    details.useVersion versions.kotlin
+                }
+            }
+        }
+    }
+
+    plugins.withType(com.android.build.gradle.LibraryPlugin) {
+        project.android.libraryVariants.all { variant ->
+            // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
+            variant.generateBuildConfigProvider.configure { task ->
+                task.enabled = false
+            }
+        }
+    }
+
+    plugins.withType(com.android.build.gradle.BasePlugin).configureEach { plugin ->
+        plugin.extension.compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach { task ->
+        task.sourceCompatibility = JavaVersion.VERSION_1_8
+        task.targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile).configureEach { task ->
+        task.kotlinOptions {
+            jvmTarget = "1.8"
+            freeCompilerArgs += [
+                    "-progressive",
+                    '-Xuse-experimental=kotlin.Experimental',
+            ]
+        }
+    }
+
+    tasks.withType(Test).configureEach {
+        maxParallelForks Runtime.runtime.availableProcessors() * 2
+        testLogging {
+            events 'passed', 'skipped', 'failed'
+        }
+    }
+}
+
+subprojects {
+    apply from: "$project.rootDir/gradle/detekt.gradle"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,4 @@
+rootProject.name='compose-lint-rules'
+include ':sample'
+include ':checks'
+include ':composelint'
