@@ -4,7 +4,6 @@ detekt {
     toolVersion = versions.detekt
     input = files("src/")
     failFast = true
-    parallel = true
     config = files("${project.rootDir}/detekt.yml")
     buildUponDefaultConfig = true
     reports {
