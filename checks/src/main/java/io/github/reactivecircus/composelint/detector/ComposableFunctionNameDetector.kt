@@ -13,7 +13,6 @@ import com.android.tools.lint.detector.api.SourceCodeScanner
 import com.android.tools.lint.detector.api.isJava
 import org.jetbrains.uast.UElement
 import org.jetbrains.uast.UMethod
-import org.jetbrains.uast.asRecursiveLogString
 import java.util.EnumSet
 import java.util.Locale
 
@@ -27,7 +26,7 @@ class ComposableFunctionNameDetector : Detector(), SourceCodeScanner {
             briefDescription = "A function marked with a `@Composable` annotation should start with a capital letter.",
             explanation = """
                 It is a convention that `@Composable` functions start with a capital letter \
-                to emphasize the mental models that a @Composable function is \
+                to emphasize the mental model that a @Composable function is \
                 a **noun** rather than a **verb**.""",
             implementation = Implementation(
                 ComposableFunctionNameDetector::class.java, EnumSet.of(
