@@ -29,10 +29,10 @@ fun Greeting(name: String) {
 /**
  * Function violates "LowerCaseComposableFunction".
  */
-//@Composable
-//fun message(name: String) {
-//    Text(text = "Hello $name!")
-//}
+// @Composable
+// fun message(name: String) {
+//     Text(text = "Hello $name!")
+// }
 
 @Preview
 @Composable

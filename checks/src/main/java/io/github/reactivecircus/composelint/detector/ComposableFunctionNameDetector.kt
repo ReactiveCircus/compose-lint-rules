@@ -44,7 +44,6 @@ class ComposableFunctionNameDetector : Detector(), SourceCodeScanner {
     override fun getApplicableUastTypes(): List<Class<out UElement>>? =
         listOf(UMethod::class.java)
 
-
     override fun createUastHandler(context: JavaContext): UElementHandler? {
         val psi = context.uastFile?.sourcePsi ?: return null
         if (isJava(psi)) {
