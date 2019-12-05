@@ -5,15 +5,15 @@ package io.github.reactivecircus.composelint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
+import androidx.compose.setViewContent
 import androidx.ui.core.Text
-import androidx.ui.core.setContent
 import androidx.ui.material.MaterialTheme
 import androidx.ui.tooling.preview.Preview
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
+        setViewContent {
             MaterialTheme {
                 Greeting("Android")
             }
