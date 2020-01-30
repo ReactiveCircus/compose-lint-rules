@@ -11,6 +11,7 @@ import com.android.tools.lint.detector.api.Scope
 import com.android.tools.lint.detector.api.Severity
 import com.android.tools.lint.detector.api.SourceCodeScanner
 import com.android.tools.lint.detector.api.isJava
+import com.intellij.psi.PsiType
 import org.jetbrains.uast.UElement
 import org.jetbrains.uast.UMethod
 import java.util.EnumSet
@@ -23,9 +24,12 @@ class ComposableFunctionNameDetector : Detector(), SourceCodeScanner {
     companion object {
         val ISSUE: Issue = Issue.create(
             id = "InvalidComposableFunctionName",
-            briefDescription = "A function marked with a `@Composable` annotation should start with a capital letter.",
+            briefDescription = """
+                A non-returning function marked with a `@Composable` annotation
+                should start with a capital letter.
+            """.trimMargin(),
             explanation = """
-                It is a convention that `@Composable` functions start with a capital letter \
+                It is a convention that `@Composable` functions which don't return a value start with a capital letter \
                 to emphasize the mental model that a @Composable function is \
                 a **noun** rather than a **verb**.""",
             implementation = Implementation(
@@ -53,11 +57,14 @@ class ComposableFunctionNameDetector : Detector(), SourceCodeScanner {
         return object : UElementHandler() {
             override fun visitMethod(node: UMethod) {
                 val methodName = node.name
-                if (node.hasAnnotation(COMPOSABLE_ANNOTATION) && methodName.first().isLowerCase()) {
+                if (node.hasAnnotation(COMPOSABLE_ANNOTATION) &&
+                    node.returnType == PsiType.VOID &&
+                    methodName.first().isLowerCase()
+                ) {
                     context.report(
                         issue = ISSUE,
                         location = context.getLocation(node),
-                        message = "`@Composable` function names should be capitalized.",
+                        message = "Non-returning `@Composable` function names should be capitalized.",
                         quickfixData = LintFix.create()
                             .replace()
                             .text(methodName)

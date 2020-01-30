@@ -9,7 +9,7 @@ import org.junit.Test
 class ComposableFunctionNameDetectorTest {
 
     @Test
-    fun `composable function name starting with capital case`() {
+    fun `composable function (not returning value) name starting with capital case is treated as valid composable function name`() {
         lint()
             .files(
                 COMPOSABLE_ANNOTATION,
@@ -31,7 +31,7 @@ class ComposableFunctionNameDetectorTest {
     }
 
     @Test
-    fun `composable function name starting with lower case`() {
+    fun `composable function (not returning value) name starting with lower case is treated as invalid composable function name`() {
         lint()
             .files(
                 COMPOSABLE_ANNOTATION,
@@ -50,7 +50,7 @@ class ComposableFunctionNameDetectorTest {
             .issues(ComposableFunctionNameDetector.ISSUE)
             .run()
             .expect("""
-                src/test.kt:3: Warning: @Composable function names should be capitalized. [InvalidComposableFunctionName]
+                src/test.kt:3: Warning: Non-returning @Composable function names should be capitalized. [InvalidComposableFunctionName]
                 @Composable
                 ^
                 0 errors, 1 warnings
@@ -64,7 +64,29 @@ class ComposableFunctionNameDetectorTest {
     }
 
     @Test
-    fun `regular function name starting with lower case`() {
+    fun `composable function (returning value) name is not treated as invalid composable function name`() {
+        lint()
+            .files(
+                COMPOSABLE_ANNOTATION,
+                kotlin(
+                    """
+                import androidx.compose.Composable
+                                        
+                @Composable
+                fun thing(name: String): String {
+                    return name
+                }
+                """.trimIndent()
+                )
+            )
+            .allowMissingSdk()
+            .issues(ComposableFunctionNameDetector.ISSUE)
+            .run()
+            .expectClean()
+    }
+
+    @Test
+    fun `non-composable function name starting with lower case is not treated as invalid composable function name`() {
         lint()
             .files(
                 kotlin(

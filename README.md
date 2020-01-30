@@ -17,7 +17,7 @@ Snapshots of the development version are available in [Sonatype's `snapshots` re
 
 ## Lint Rules
 
-- **InvalidComposableFunctionName** - A function marked with a `@Composable` annotation should start with a capital letter. It is a convention to emphasize the mental model that a `@Composable` function is a **noun** rather than a **verb**.
+- **InvalidComposableFunctionName** - A non-returning function marked with a `@Composable` annotation should start with a capital letter. It is a convention to emphasize the mental model that a `@Composable` function is a **noun** rather than a **verb**.
 
 [maven-central]: https://search.maven.org/search?q=g:io.github.reactivecircus.composelint
 [snap]: https://oss.sonatype.org/content/repositories/snapshots/
