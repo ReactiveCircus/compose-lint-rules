@@ -18,7 +18,7 @@ import java.util.EnumSet
 import java.util.Locale
 
 @Suppress("UnstableApiUsage", "ReturnCount")
-@UseExperimental(ExperimentalStdlibApi::class)
+@OptIn(ExperimentalStdlibApi::class)
 class ComposableFunctionNameDetector : Detector(), SourceCodeScanner {
 
     companion object {
