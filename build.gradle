@@ -13,9 +13,9 @@ buildscript {
             mavenPublishPlugin : '0.9.0',
             kotlin             : '1.3.70',
             androidx           : [
-                    core      : '1.3.0-alpha01',
+                    core      : '1.3.0-alpha02',
                     annotation: '1.1.0',
-                    appCompat : '1.2.0-alpha02',
+                    appCompat : '1.2.0-alpha03',
                     ui        : '0.1.0-dev05'
             ],
             junit              : '4.13'
