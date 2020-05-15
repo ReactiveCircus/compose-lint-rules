@@ -14,9 +14,9 @@ buildscript {
             kotlin             : '1.3.72',
             androidx           : [
                     core      : '1.3.0-rc01',
-                    annotation: '1.1.0',
-                    appCompat : '1.2.0-beta01',
-                    ui        : '0.1.0-dev10'
+                    annotation: '1.2.0-alpha01',
+                    appCompat : '1.2.0-rc01',
+                    ui        : '0.1.0-dev11'
             ],
             junit              : '4.13'
     ]

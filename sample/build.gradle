@@ -35,7 +35,6 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${versions.androidx.appCompat}"
     implementation "androidx.core:core-ktx:${versions.androidx.core}"
 
-    implementation "androidx.ui:ui-framework:${versions.androidx.ui}"
     implementation "androidx.ui:ui-layout:${versions.androidx.ui}"
     implementation "androidx.ui:ui-material:${versions.androidx.ui}"
     implementation "androidx.ui:ui-tooling:${versions.androidx.ui}"
