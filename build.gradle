@@ -1,22 +1,22 @@
 buildscript {
     ext.buildConfig = [
             minSdk    : 21,
-            targetSdk : 29,
-            compileSdk: 29,
-            buildTools: '29.0.3'
+            targetSdk : 30,
+            compileSdk: 30,
+            buildTools: '30.0.0'
     ]
 
     ext.versions = [
-            androidGradlePlugin: '4.1.0-alpha09',
-            androidLint        : '27.1.0-alpha09',
+            androidGradlePlugin: '4.2.0-alpha01',
+            androidLint        : '27.2.0-alpha01',
             detekt             : '1.9.1',
             mavenPublishPlugin : '0.11.1',
             kotlin             : '1.3.72',
             androidx           : [
-                    core      : '1.4.0-alpha01',
+                    core      : '1.5.0-alpha01',
                     annotation: '1.2.0-alpha01',
                     appCompat : '1.3.0-alpha01',
-                    ui        : '0.1.0-dev12'
+                    ui        : '0.1.0-dev13'
             ],
             junit              : '4.13'
     ]
