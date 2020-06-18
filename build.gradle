@@ -1,3 +1,7 @@
+import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.LibraryPlugin
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
+
 buildscript {
     ext.buildConfig = [
             minSdk    : 21,
@@ -42,12 +46,15 @@ allprojects {
         jcenter()
     }
 
-    plugins.withType(com.android.build.gradle.LibraryPlugin) {
-        project.android.buildFeatures.buildConfig = false
+    plugins.withType(AppPlugin).configureEach { plugin ->
+        extensions.getByName("android").compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
     }
 
-    plugins.withType(com.android.build.gradle.BasePlugin).configureEach { plugin ->
-        plugin.extension.compileOptions {
+    plugins.withType(LibraryPlugin).configureEach { plugin ->
+        extensions.getByName("android").compileOptions {
             sourceCompatibility = JavaVersion.VERSION_1_8
             targetCompatibility = JavaVersion.VERSION_1_8
         }
@@ -58,7 +65,7 @@ allprojects {
         task.targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile).configureEach { task ->
+    tasks.withType(KotlinJvmCompile).configureEach { task ->
         task.kotlinOptions {
             jvmTarget = "1.8"
             freeCompilerArgs += [
