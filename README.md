@@ -1,6 +1,6 @@
 # Compose Lint Rules
 
-[![CircleCI](https://circleci.com/gh/ReactiveCircus/compose-lint-rules.svg?style=svg)](https://circleci.com/gh/ReactiveCircus/compose-lint-rules)
+![CI](https://github.com/ReactiveCircus/compose-lint-rules/workflows/CI/badge.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Android Lint rules for **Jetpack Compose**.
