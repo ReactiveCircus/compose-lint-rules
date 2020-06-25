@@ -20,7 +20,7 @@ buildscript {
                     core      : '1.5.0-alpha01',
                     annotation: '1.2.0-alpha01',
                     appCompat : '1.3.0-alpha01',
-                    ui        : '0.1.0-dev13'
+                    ui        : '0.1.0-dev14'
             ],
             junit              : '4.13'
     ]
