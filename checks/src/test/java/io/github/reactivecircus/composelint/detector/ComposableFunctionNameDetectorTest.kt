@@ -15,7 +15,7 @@ class ComposableFunctionNameDetectorTest {
                 COMPOSABLE_ANNOTATION,
                 kotlin(
                     """
-                import androidx.compose.Composable
+                import androidx.compose.runtime.Composable
                 
                 @Composable
                 fun Greeting(name: String) {
@@ -37,7 +37,7 @@ class ComposableFunctionNameDetectorTest {
                 COMPOSABLE_ANNOTATION,
                 kotlin(
                     """
-                import androidx.compose.Composable
+                import androidx.compose.runtime.Composable
                 
                 @Composable
                 fun greeting(name: String) {
@@ -70,7 +70,7 @@ class ComposableFunctionNameDetectorTest {
                 COMPOSABLE_ANNOTATION,
                 kotlin(
                     """
-                import androidx.compose.Composable
+                import androidx.compose.runtime.Composable
                                         
                 @Composable
                 fun thing(name: String): String {

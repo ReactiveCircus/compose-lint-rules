@@ -42,7 +42,7 @@ class ComposableFunctionNameDetector : Detector(), SourceCodeScanner {
             severity = Severity.WARNING
         )
 
-        private const val COMPOSABLE_ANNOTATION = "androidx.compose.Composable"
+        private const val COMPOSABLE_ANNOTATION = "androidx.compose.runtime.Composable"
     }
 
     override fun getApplicableUastTypes(): List<Class<out UElement>>? =

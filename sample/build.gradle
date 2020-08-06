@@ -25,19 +25,18 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerVersion "1.4.0-dev-withExperimentalGoogleExtensions-20200720"
-        kotlinCompilerExtensionVersion "${versions.androidx.ui}"
+        kotlinCompilerVersion "1.4.0-rc"
+        kotlinCompilerExtensionVersion "${versions.androidx.compose}"
     }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     implementation "androidx.appcompat:appcompat:${versions.androidx.appCompat}"
     implementation "androidx.core:core-ktx:${versions.androidx.core}"
 
-    implementation "androidx.compose.foundation:foundation-layout:${versions.androidx.ui}"
-    implementation "androidx.compose.material:material:${versions.androidx.ui}"
-    implementation "androidx.ui:ui-tooling:${versions.androidx.ui}"
+    implementation "androidx.compose.foundation:foundation-layout:${versions.androidx.compose}"
+    implementation "androidx.compose.material:material:${versions.androidx.compose}"
+    implementation "androidx.ui:ui-tooling:${versions.androidx.compose}"
 
     lintChecks project(":checks")
 }

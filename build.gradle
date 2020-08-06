@@ -20,7 +20,7 @@ buildscript {
                     core      : '1.5.0-alpha01',
                     annotation: '1.2.0-alpha01',
                     appCompat : '1.3.0-alpha01',
-                    ui        : '0.1.0-dev15'
+                    compose   : '0.1.0-dev16'
             ],
             junit              : '4.13'
     ]
@@ -44,17 +44,6 @@ allprojects {
         mavenCentral()
         google()
         jcenter()
-        maven { url "https://dl.bintray.com/kotlin/kotlin-eap/" }
-    }
-
-    configurations.configureEach {
-        resolutionStrategy {
-            eachDependency { details ->
-                if (details.requested.group == "org.jetbrains.kotlin" && details.requested.name.startsWith("kotlin-stdlib")) {
-                    details.useVersion versions.kotlin
-                }
-            }
-        }
     }
 
     plugins.withType(AppPlugin).configureEach { plugin ->
