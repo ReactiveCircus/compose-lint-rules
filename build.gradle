@@ -15,7 +15,7 @@ buildscript {
             androidLint        : '27.2.0-alpha07',
             detekt             : '1.11.0',
             mavenPublishPlugin : '0.12.0',
-            kotlin             : '1.4.0-rc',
+            kotlin             : '1.4.0',
             androidx           : [
                     core      : '1.5.0-alpha01',
                     annotation: '1.2.0-alpha01',
