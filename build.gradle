@@ -1,6 +1,6 @@
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
+import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
 
 buildscript {
     ext.buildConfig = [
@@ -13,7 +13,7 @@ buildscript {
     ext.versions = [
             androidGradlePlugin: '4.2.0-alpha07',
             androidLint        : '27.2.0-alpha07',
-            detekt             : '1.11.0',
+            detekt             : '1.11.1',
             mavenPublishPlugin : '0.12.0',
             kotlin             : '1.4.0',
             androidx           : [
@@ -60,12 +60,7 @@ allprojects {
         }
     }
 
-    tasks.withType(JavaCompile).configureEach { task ->
-        task.sourceCompatibility = JavaVersion.VERSION_1_8
-        task.targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    tasks.withType(KotlinJvmCompile).configureEach { task ->
+    tasks.withType(KotlinCompile).configureEach { task ->
         task.kotlinOptions {
             jvmTarget = "1.8"
             freeCompilerArgs += [
