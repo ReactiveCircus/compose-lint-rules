@@ -49,18 +49,22 @@ class ComposableFunctionNameDetectorTest {
             .allowMissingSdk()
             .issues(ComposableFunctionNameDetector.ISSUE)
             .run()
-            .expect("""
+            .expect(
+                """
                 src/test.kt:3: Warning: Non-returning @Composable function names should be capitalized. [InvalidComposableFunctionName]
                 @Composable
                 ^
                 0 errors, 1 warnings
-            """.trimIndent())
-            .expectFixDiffs("""
+            """.trimIndent()
+            )
+            .expectFixDiffs(
+                """
                 Fix for src/test.kt line 3: Replace with Greeting:
                 @@ -4 +4
                 - fun greeting(name: String) {
                 + fun Greeting(name: String) {
-            """.trimIndent())
+            """.trimIndent()
+            )
     }
 
     @Test

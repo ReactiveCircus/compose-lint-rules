@@ -33,7 +33,8 @@ class ComposableFunctionNameDetector : Detector(), SourceCodeScanner {
                 to emphasize the mental model that a @Composable function is \
                 a **noun** rather than a **verb**.""",
             implementation = Implementation(
-                ComposableFunctionNameDetector::class.java, EnumSet.of(
+                ComposableFunctionNameDetector::class.java,
+                EnumSet.of(
                     Scope.JAVA_FILE
                 )
             ),
