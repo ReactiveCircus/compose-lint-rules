@@ -17,10 +17,10 @@ buildscript {
             mavenPublishPlugin : '0.13.0',
             kotlin             : '1.4.10',
             androidx           : [
-                    core      : '1.5.0-alpha02',
+                    core      : '1.5.0-alpha03',
                     annotation: '1.2.0-alpha01',
                     appCompat : '1.3.0-alpha02',
-                    compose   : '1.0.0-alpha02'
+                    compose   : '1.0.0-alpha03'
             ],
             junit              : '4.13'
     ]
