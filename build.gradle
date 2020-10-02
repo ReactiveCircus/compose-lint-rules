@@ -11,16 +11,16 @@ buildscript {
     ]
 
     ext.versions = [
-            androidGradlePlugin: '4.2.0-alpha12',
-            androidLint        : '27.2.0-alpha12',
-            detekt             : '1.14.0',
+            androidGradlePlugin: '4.2.0-alpha13',
+            androidLint        : '27.2.0-alpha13',
+            detekt             : '1.14.1',
             mavenPublishPlugin : '0.13.0',
             kotlin             : '1.4.10',
             androidx           : [
-                    core      : '1.5.0-alpha03',
+                    core      : '1.5.0-alpha04',
                     annotation: '1.2.0-alpha01',
                     appCompat : '1.3.0-alpha02',
-                    compose   : '1.0.0-alpha03'
+                    compose   : '1.0.0-alpha04'
             ],
             junit              : '4.13'
     ]
