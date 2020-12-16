@@ -14,7 +14,8 @@ object Stubs {
                 AnnotationTarget.FUNCTION,
                 AnnotationTarget.TYPE,
                 AnnotationTarget.TYPE_PARAMETER,
-                AnnotationTarget.PROPERTY
+                AnnotationTarget.PROPERTY,
+                AnnotationTarget.PROPERTY_GETTER,
             )
             annotation class Composable
         """.trimIndent()
