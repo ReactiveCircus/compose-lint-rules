@@ -48,21 +48,21 @@ allprojects {
 
     plugins.withType(AppPlugin).configureEach { plugin ->
         extensions.getByName("android").compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
         }
     }
 
     plugins.withType(LibraryPlugin).configureEach { plugin ->
         extensions.getByName("android").compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
         }
     }
 
     tasks.withType(KotlinCompile).configureEach { task ->
         task.kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = "11"
             freeCompilerArgs += [
                     "-Xallow-jvm-ir-dependencies",
                     "-Xskip-prerelease-check",
