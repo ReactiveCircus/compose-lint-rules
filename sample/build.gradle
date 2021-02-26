@@ -31,6 +31,7 @@ android {
 
 dependencies {
     implementation "androidx.appcompat:appcompat:${versions.androidx.appCompat}"
+    implementation "androidx.activity:activity-compose:${versions.androidx.activity}"
     implementation "androidx.core:core-ktx:${versions.androidx.core}"
 
     implementation "androidx.compose.foundation:foundation-layout:${versions.androidx.compose}"
