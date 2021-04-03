@@ -14,7 +14,7 @@ buildscript {
             androidGradlePlugin: '7.0.0-alpha12',
             androidLint        : '30.0.0-alpha12',
             detekt             : '1.16.0',
-            mavenPublishPlugin : '0.13.0',
+            mavenPublishPlugin : '0.14.2',
             kotlin             : '1.4.31',
             androidx           : [
                     core      : '1.6.0-alpha01',
